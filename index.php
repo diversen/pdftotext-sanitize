@@ -26,15 +26,26 @@ function rmBind ($ary) {
 function getStr ($ary) {
     $ret = '';
     foreach ($ary as $val) {
-        $ret.= $val . "\n";
+        if (endsWith($val, '-')) {
+            $val = rtrim($val, '-');
+            $ret.=$val;
+        } else {
+            // $val = rtrim($val, '-');
+            $ret.= $val . "\n";
+        }
     }
     return $ret;
+}
+
+function endsWith($haystack, $needle) {
+    // search forward starting from end minus needle length characters
+    return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
 }
 
 
 
 $ary = trimStr($ary);
-$ary = rmBind($ary);
+
 $str = getStr($ary);
 
 // rm double lines
