@@ -1,0 +1,5 @@
+{
+    "require": {
+        "diversen/simple-php-classes": "^1.4"
+    }
+}
