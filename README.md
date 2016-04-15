@@ -1,6 +1,8 @@
 # pdftotext sanitize
 
-Sanitize output from pdftotext
+Sanitize output from pdftotext (or pdftohtml)
+
+Actually pdftohtml is easier to copy-paste from, than pdftotext
 
 Trim strings
 Remove trailing '-'
