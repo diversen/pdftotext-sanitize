@@ -1,9 +1,5 @@
-#!/usr/bin/env php
 <?php
 
-if (!isset($argv[1])) {
-    die('Specify file' . PHP_EOL);
-}
 
 /**
  * Get file as an array and remove empty lines
@@ -48,7 +44,11 @@ function trimStr ($ary) {
  */
 function getStr ($ary) {
     $ret = '';
+
     foreach ($ary as $val) {
+
+    // &shy  
+    $val = str_replace('­', '-', $val);
         if (endsWith($val, '-')) {
             $val = rtrim($val, '-');
             $ret.=$val;
@@ -70,12 +70,5 @@ function endsWith($haystack, $needle) {
     // search forward starting from end minus needle length characters
     return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
 }
-
-$ary = getFileAsAry($argv[1]);
-$ary = trimStr($ary);
-$str = getStr($ary);
-
-// rm double lines
-echo preg_replace("/(\r?\n){2,}/", "\n", $str);
 
 
